@@ -19,7 +19,7 @@ const WallerRequest = () => {
     setWalletAction("create");
     const mnemonic = generateMnemonic();
     const seed = mnemonicToSeedSync(mnemonic);
-    const path = "m/44'/60'/0'/0'/0'";
+    const path = "m/44'/501'/0'/0'";
 
     const derivedSeed = derivePath(path, seed.toString("hex")).key;
     const keyPair = nacl.sign.keyPair.fromSeed(derivedSeed);
@@ -127,7 +127,7 @@ function AddExistingWallet() {
   function handleMnemonic(mnemonic: string) {
     try {
       const seed = mnemonicToSeedSync(mnemonic);
-      const path = "m/44'/60'/0'/0'/0'";
+      const path = "m/44'/501'/0'/0'";
 
       const derivedSeed = derivePath(path, seed.toString("hex")).key;
       const keyPair = nacl.sign.keyPair.fromSeed(derivedSeed);
@@ -148,10 +148,12 @@ function AddExistingWallet() {
           },
         ])
       );
+      localStorage.setItem("mnemonic", mnemonic);
     } catch (error) {
       setErrorMessage("The mnemonic is invalid. Please try again.");
     }
-    const mnemonicArrayLocal = mnemonic.trim().split(" ");
+    const mnemonicArrayLocal = mnemonic.replace(/\s+/g, " ").trim().split(" ");
+    console.log("mnemonicArrayLocal", mnemonicArrayLocal);
 
     if (mnemonicArrayLocal.length === 12) {
       setMnemonicArray(mnemonicArrayLocal);
