@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
+@media (min-width: 769px) {
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* For Firefox */
+  .hide-scrollbar {
+    scrollbar-width: none;
+  }
 }

@@ -255,7 +255,7 @@ function ShowKeys({ keys }: any) {
     <div className="flex justify-between w-full gap-2 bg-neutral-700 rounded-lg">
       <div className="flex-1 py-2 px-4 rounded-l-lg overflow-hidden">
         {isVisible ? (
-          <p className="overflow-x-scroll whitespace-nowrap w-full md:hide-scrollbar text-gray-200 text-sm h-6 flex items-center">
+          <p className="overflow-x-scroll whitespace-nowrap w-full hide-scrollbar text-gray-200 text-sm h-6 flex items-center">
             {keys}
           </p>
         ) : (
